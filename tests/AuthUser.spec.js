@@ -27,8 +27,6 @@ await expect(yourFeedPage.profileNameFeed).toContainText(user.username);/// пр
 test('Login existing user', async ({ page }) => {
 
 
-//console.log(ExistingUser);/// существующий пользователь
-
 const mainPage     = new MainPage (page);
 const loginPage    =new LoginPage (page);
 const yourFeedPage = new YourFeedPage(page);
@@ -47,12 +45,10 @@ test('User can change password', async ({ page }) => {
 
 //создаем данные нового пользователя
 const user = new UserBuilder().addEmail().addPassword(10).addUser().generate()
-//console.log(user);
 
 //создаем новый пароль
 const userNewPassword = new UserBuilder().addPassword(10).generate();
 
-//console.log(userNewPassword);/// новые данные пользователя
 const mainPage = new MainPage (page);
 const registerPage = new RegisterPage(page);
 const yourFeedPage = new YourFeedPage(page);

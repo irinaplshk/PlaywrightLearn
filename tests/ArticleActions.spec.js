@@ -17,17 +17,14 @@ test.describe('User actions with articles', () => {
       await mainPage.gotoLogin();
 
       await loginPage.loginUser(existingUser.email, existingUser.password);///логирование существующего пользователя в системе
-      //console.log(`${existingUser.username}\n${existingUser.email}\n${existingUser.password}`);
-
-
-
+      
    })
 
    test('User can add new article', async ({ page }) => {
 
 
       const articleData = new ArticleBuilder().addArticle().addDescribeArticle().addArticleTitle().addTag().generate();
-      //console.log(articleData);
+      
 
       const yourFeedPage = new YourFeedPage(page);
       const addArticlePage = new AddArticlePage(page);
@@ -45,8 +42,6 @@ test.describe('User actions with articles', () => {
 
       await expect(articlePage.articleTitleField).toContainText(articleData.ArticleTitle);//статья сохранилась-открылась новая старница + заголовок статьи совпадает
 
-      //await articlePage.deleteArticle();//удалить статью чтобы потом заново добавить  тк есть проверка на уникальность
-
 
    });
 
@@ -54,9 +49,7 @@ test.describe('User actions with articles', () => {
    test('User can add new comment in article', async ({ page }) => {
 
       const articleData = new ArticleBuilder().addArticle().addDescribeArticle().addArticleTitle().addTag().addComment().generate();
-      //console.log(articleData);
-
-
+      
       const yourFeedPage = new YourFeedPage(page);
       const addArticlePage = new AddArticlePage(page);
       const articlePage = new ArticlePage(page);
@@ -74,10 +67,8 @@ test.describe('User actions with articles', () => {
       await articlePage.postNewComment(articleData.Comment);
       await expect(articlePage.commentField).toContainText(articleData.Comment);
 
-      //await articlePage.deleteArticle();
+      
    });
-
-
 
 
 });
