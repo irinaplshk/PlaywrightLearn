@@ -7,7 +7,7 @@ export class ArticleBuilder {
 
 
     addArticleTitle() {
-        this.articleData.ArticleTitle = faker.book.title();
+        this.articleData.ArticleTitle = faker.book.title()+ faker.book.author();
         return this;
     }
     addDescribeArticle() {

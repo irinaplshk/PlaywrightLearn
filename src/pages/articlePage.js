@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 export class ArticlePage {
 
     constructor(page){ 
@@ -9,16 +10,22 @@ export class ArticlePage {
       this.postCommentButton  = page.getByRole('button', { name: 'Post Comment' });
       this.commentField = page.getByRole('main');
     }
-
-    async gotoEditArticle (){
+    
+  async gotoEditArticle() {
+    await test.step("Go to edit article", async () => {
       this.editArticleLink.click();
-
-    }
+    });
+  }
     
     async postNewComment (textComment) {
+      await test.step("Enter  article comment", async () => {
       this.addCommentField.click();
       this.addCommentField.fill(textComment);
+    });
+    await test.step("Post article comment", async () => {
       this.postCommentButton.click();
+    });
+
     }
     async deleteArticle(){
       this.deleteArticleLink.click();
